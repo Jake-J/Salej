@@ -1,26 +1,29 @@
 <div class="login-page">
   <mat-card class="login-card">
-    <mat-card-header color="primary" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card-header color="primary" fxLayout="row" fxLayoutAlign="center center" class="login-header">
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form>
+      <form #f="ngForm" 
+            novalidate
+            (ngSubmit)="onLogin()"
+      >
         <div fxLayout="row" fxLayoutAlign="start center">
           <mat-icon>person</mat-icon>
           <mat-form-field fxFlex="1 1">
-            <input matInput placeholder="Login" type="text" required/>
+            <input matInput placeholder="Login" type="text" name="login" [(ngModel)]="loginTemplate.login" required/>
           </mat-form-field>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center">
           <mat-icon>lock</mat-icon>
           <mat-form-field fxFlex="1 1">
-            <input matInput placeholder="Password" type="password" required/>
+            <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="loginTemplate.password" required/>
           </mat-form-field>
         </div>
       </form>
     </mat-card-content>
     <mat-card-actions fxLayout="row" fxLayoutAlign="stretch center">
-      <button mat-raised-button color="primary" fxFlex="1 1">Login</button>
+      <button mat-raised-button color="primary" fxFlex="1 1" (click)="onLogin()">Login</button>
     </mat-card-actions> 
   </mat-card>
 </div>
